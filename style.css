@@ -1,0 +1,291 @@
+/* Apply retro fonts */
+body {
+    font-family: 'VT323', monospace;
+    font-size: 20px; /* Base font size */
+}
+
+button, input, select, option {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+}
+
+h1, h2, h3, .font-heading {
+    font-family: 'Press+Start+2P', cursive;
+}
+
+/* 8-bit button style */
+/* The @apply rules were moved to the HTML class attributes */
+.btn {
+    /* @apply block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all; */
+}
+.btn:active {
+    /* @apply border-b-4 border-r-4 translate-y-1 translate-x-1; */
+}
+
+/* Base button colors (will be overridden by theme) */
+/* The @apply rules were moved to the HTML class attributes */
+.btn-green {}
+.btn-green:hover {}
+.btn-green:active {}
+
+.btn-yellow {}
+.btn-yellow:hover {}
+.btn-yellow:active {}
+
+.btn-cyan {}
+.btn-cyan:hover {}
+.btn-cyan:active {}
+
+.btn-pink {}
+.btn-pink:hover {}
+.btn-pink:active {}
+
+.btn-red {}
+.btn-red:hover {}
+.btn-red:active {}
+
+.btn-gray {}
+.btn-gray:hover {}
+.btn-gray:active {}
+
+
+/* Remove default number input spinner */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Dice Roll Animation */
+@keyframes roll {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(180deg) scale(1.2); }
+    50% { transform: rotate(360deg) scale(1); }
+    75% { transform: rotate(540deg) scale(1.2); }
+    100% { transform: rotate(720deg) scale(1); }
+}
+.dice-roll-animation {
+    animation: roll 0.8s ease-out;
+}
+
+/* Hide all screens by default */
+.screen {
+    display: none;
+}
+
+/* --- THEME STYLES --- */
+
+/* 1. Default Theme: Classic Console (Light) */
+/* The @apply rules were moved to the HTML class attributes */
+body {
+    /* @apply bg-blue-200 text-black; */
+}
+.arcade-container {
+    /* @apply bg-blue-50 border-8 border-blue-500; */
+}
+.arcade-title {
+    /* @apply text-blue-700; */
+}
+.text-primary { /* @apply text-black; */ }
+.text-secondary { /* @apply text-gray-700; */ }
+.text-highlight { /* @apply text-pink-600; */ }
+.text-accent { /* @apply text-blue-600; */ }
+.text-accent-yellow { /* @apply text-yellow-600; */ }
+.text-success { /* @apply text-green-600; */ }
+.text-error { /* @apply text-red-600; */ }
+
+.input-retro {
+    /* @apply block w-full p-4 border-4 border-gray-500; */
+    background-color: #FFFFFF !important; /* bg-white */
+    color: #000000 !important; /* text-black */
+}
+.input-retro::placeholder { color: #6B7280; opacity: 1; }
+.input-retro::-ms-input-placeholder { color: #6B7280; }
+.input-retro:-ms-input-placeholder { color: #6B7280; }
+
+.select-retro {
+    /* @apply block w-full p-4 border-4 border-gray-500 text-black appearance-none; */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='butt' stroke-linejoin='miter'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5em 1.5em;
+    color: black;
+    background-color: #FFFFFF;
+}
+.select-retro option {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+.list-item {
+     /* @apply bg-blue-100 p-2 border-2 border-blue-300; */
+}
+.list-item-hover {
+    /* @apply cursor-pointer hover:bg-blue-200; */
+}
+
+.divider { /* @apply border-gray-400; */ }
+.bg-level-1 { /* @apply bg-blue-100 border-blue-300; */ }
+.bg-level-2 { /* @apply bg-white border-gray-500; */ }
+.bg-level-3 { /* @apply bg-gray-300 border-gray-500; */ }
+
+input[type="checkbox"] {
+    background-color: #E5E7EB; /* bg-gray-200 */
+    border: 2px solid #6b7280; /* border-gray-500 */
+}
+input[type="checkbox"]:checked {
+    background-color: #3B82F6; /* blue-500 */
+    border-color: #1D4ED8; /* blue-700 */
+}
+input[type="checkbox"]:checked::after {
+    content: 'X'; display: block; text-align: center;
+    line-height: 18px; color: white; font-size: 16px;
+}
+
+/* 2. Cyberpunk Theme (Dark) Overrides */
+@keyframes pulse-pink-glow {
+    0%, 100% { box-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899, 0 0 30px #ec4899; }
+    50% { box-shadow: 0 0 20px #ec4899, 0 0 30px #ec4899, 0 0 40px #ec4899; }
+}
+@keyframes pulse-cyan-text-glow {
+    0%, 100% { text-shadow: 0 0 5px #06b6d4, 0 0 10px #06b6d4; }
+    50% { text-shadow: 0 0 10px #06b6d4, 0 0 15px #06b6d4; }
+}
+
+.theme-cyberpunk {
+    /* @apply bg-black text-white; */
+}
+.theme-cyberpunk::after { /* Scanlines */
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; pointer-events: none;
+    background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 50%);
+    background-size: 100% 4px; opacity: 0.3; z-index: 100;
+}
+.theme-cyberpunk .arcade-container {
+    /* @apply bg-gray-900 border-8 border-pink-500; */
+    animation: pulse-pink-glow 3s infinite ease-in-out;
+}
+.theme-cyberpunk .arcade-title {
+    /* @apply text-cyan-400; */
+    animation: pulse-cyan-text-glow 2s infinite ease-in-out;
+}
+
+.theme-cyberpunk .text-primary { /* @apply text-white; */ }
+.theme-cyberpunk .text-secondary { /* @apply text-gray-400; */ }
+.theme-cyberpunk .text-highlight { /* @apply text-pink-500; */ }
+.theme-cyberpunk .text-accent { /* @apply text-blue-400; */ }
+.theme-cyberpunk .text-accent-yellow { /* @apply text-yellow-400; */ }
+.theme-cyberpunk .text-success { /* @apply text-green-500; */ }
+.theme-cyberpunk .text-error { /* @apply text-red-500; */ }
+
+.theme-cyberpunk .input-retro {
+    background-color: #1F2937 !important; /* bg-gray-800 */
+    color: #FFFFFF !important; /* text-white */
+    /* @apply border-gray-500; */
+}
+.theme-cyberpunk .input-retro::placeholder { color: #9CA3AF; }
+.theme-cyberpunk .input-retro::-ms-input-placeholder { color: #9CA3AF; }
+.theme-cyberpunk .input-retro:-ms-input-placeholder { color: #9CA3AF; }
+
+.theme-cyberpunk .select-retro {
+    /* @apply border-gray-500 text-white; */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='butt' stroke-linejoin='miter'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    color: white;
+    background-color: #1F2937;
+}
+.theme-cyberpunk .select-retro option {
+    background: #1F2937 !important;
+    color: #FFFFFF !important;
+}
+
+.theme-cyberpunk .list-item {
+     /* @apply bg-gray-800 p-2 border-2 border-gray-500; */
+}
+.theme-cyberpunk .list-item-hover {
+    /* @apply cursor-pointer hover:bg-gray-700; */
+}
+
+.theme-cyberpunk .divider { /* @apply border-gray-500; */ }
+.theme-cyberpunk .bg-level-1 { /* @apply bg-gray-800 border-gray-500; */ }
+.theme-cyberpunk .bg-level-2 { /* @apply bg-gray-800 border-gray-500; */ }
+.theme-cyberpunk .bg-level-3 { /* @apply bg-gray-700 border-gray-500; */ }
+
+.theme-cyberpunk input[type="checkbox"] {
+    background-color: #374151; /* bg-gray-700 */
+    border: 2px solid #6b7280; /* border-gray-500 */
+}
+.theme-cyberpunk input[type="checkbox"]:checked {
+    background-color: #ec4899; /* pink-500 */
+    border-color: #be185d; /* pink-700 */
+}
+.theme-cyberpunk input[type="checkbox"]:checked::after {
+    color: white;
+}
+
+/* --- 3. Vibrant Candy Theme (Light) Overrides --- */
+
+.theme-vibrant {
+    /* @apply bg-orange-200 text-gray-800; */ /* Bright page background */
+}
+.theme-vibrant .arcade-container {
+    /* @apply bg-white border-8 border-purple-600; */ /* White container, purple border */
+}
+.theme-vibrant .arcade-title {
+    /* @apply text-pink-600; */ /* Bright pink title */
+}
+
+.theme-vibrant .text-primary { /* @apply text-gray-800; */ }
+.theme-vibrant .text-secondary { /* @apply text-gray-600; */ }
+.theme-vibrant .text-highlight { /* @apply text-pink-600; */ } /* Pink highlight */
+.theme-vibrant .text-accent { /* @apply text-purple-600; */ } /* Purple accent */
+.theme-vibrant .text-accent-yellow { /* @apply text-yellow-600; */ }
+.theme-vibrant .text-success { /* @apply text-green-600; */ }
+.theme-vibrant .text-error { /* @apply text-red-600; */ }
+
+.theme-vibrant .input-retro {
+    background-color: #FFFFFF !important; /* bg-white */
+    color: #1F2937 !important; /* text-gray-800 */
+    /* @apply border-purple-400; */ /* Purple border on inputs */
+}
+.theme-vibrant .input-retro::placeholder { color: #9CA3AF; } /* gray-400 */
+.theme-vibrant .input-retro::-ms-input-placeholder { color: #9CA3AF; }
+.theme-vibrant .input-retro:-ms-input-placeholder { color: #9CA3AF; }
+
+.theme-vibrant .select-retro {
+    /* @apply border-purple-400 text-gray-800; */
+    /* New SVG arrow with purple color */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B21A8' stroke-width='3' stroke-linecap='butt' stroke-linejoin='miter'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    color: #1F2937; /* gray-800 */
+    background-color: #FFFFFF; /* white */
+}
+.theme-vibrant .select-retro option {
+    background: #FFFFFF !important;
+    color: #1F2937 !important;
+}
+
+.theme-vibrant .list-item {
+     /* @apply bg-purple-100 p-2 border-2 border-purple-300; */ /* Light purple list items */
+}
+.theme-vibrant .list-item-hover {
+    /* @apply cursor-pointer hover:bg-purple-200; */
+}
+
+.theme-vibrant .divider { /* @apply border-gray-400; */ }
+.theme-vibrant .bg-level-1 { /* @apply bg-purple-100 border-purple-300; */ } /* Light purple */
+.theme-vibrant .bg-level-2 { /* @apply bg-white border-gray-400; */ } /* White */
+.theme-vibrant .bg-level-3 { /* @apply bg-gray-200 border-gray-400; */ } /* Light gray */
+
+.theme-vibrant input[type="checkbox"] {
+    background-color: #E5E7EB; /* bg-gray-200 */
+    border: 2px solid #9CA3AF; /* border-gray-400 */
+}
+.theme-vibrant input[type="checkbox"]:checked {
+    background-color: #ec4899; /* pink-500 */
+    border-color: #be185d; /* pink-700 */
+}
+.theme-vibrant input[type="checkbox"]:checked::after {
+    color: white;
+}

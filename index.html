@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geek Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-blue-200 text-black h-full p-4 flex items-center justify-center">
+
+    <div class="w-full max-w-2xl bg-blue-50 border-8 border-blue-500 shadow-2xl p-6 relative arcade-container">
+
+        <header class="mb-4">
+            <h1 class="text-3xl md:text-4xl text-center text-blue-700 mb-2 arcade-title">GEEK HUB</h1>
+            <div class="text-center font-heading text-lg text-highlight mt-2">
+                <span id="gameIdDisplay" class="hidden">GAME ID: ...</span>
+                <span id="questionCount"></span>
+            </div>
+            <div id="scoreHeader" class="hidden grid grid-cols-2 md:grid-cols-4 gap-2 text-center font-heading text-lg md:text-xl mt-2">
+                </div>
+        </header>
+
+        <div id="timerArea" class="hidden w-full bg-level-3 border-2 border-gray-500 h-6 mb-4">
+            <div id="timerBar" class="bg-green-500 h-full" style="width: 100%;"></div>
+        </div>
+
+        <main id="contentArea">
+            
+            <div id="authScreen" class="screen">
+                <h2 class="font-heading text-2xl text-center text-accent mb-6">LOGIN / REGISTER</h2>
+                <div class="space-y-4">
+                    <input type="email" id="authEmail" class="input-retro block w-full p-4 border-4 border-gray-500" placeholder="EMAIL..." autocomplete="email">
+                    <input type="password" id="authPassword" class="input-retro block w-full p-4 border-4 border-gray-500" placeholder="PASSWORD..." autocomplete="current-password">
+                    <p id="authError" class="text-error text-center text-lg hidden">Error processing request!</p>
+                    <button id="loginButton" class="btn btn-green block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-green-500 border-green-700 text-black hover:bg-green-400 active:bg-green-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">LOGIN</button>
+                    <button id="registerButton" class="btn btn-cyan block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">REGISTER</button>
+                </div>
+            </div>
+            
+            <div id="welcomeScreen" class="screen">
+                <p id="authStatus" class="text-center text-success text-lg mb-4 hidden">Logged in as...</p>
+                <p class="text-lg text-primary mb-4 text-center">Welcome! Select your game mode.</p>
+                
+                <div class="bg-level-1 bg-blue-100 border-blue-300 p-4 mb-6 border-4">
+                    <label for="displayNameInput" class="block text-lg text-accent mb-2">SET DISPLAY NAME:</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="displayNameInput" class="input-retro block w-full p-4 border-4 border-gray-500" placeholder="Your Name...">
+                        <button id="setDisplayNameButton" class="btn btn-yellow !w-auto !p-3 block p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-yellow-400 border-yellow-600 text-black hover:bg-yellow-300 active:bg-yellow-300 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">SET</button>
+                    </div>
+                </div>
+                
+                <div class="bg-level-1 bg-blue-100 border-blue-300 p-4 mb-6 border-4">
+                    <label for="themeSelect" class="block text-lg text-accent mb-2">SELECT THEME:</label>
+                    <select id="themeSelect" class="select-retro block w-full p-4 border-4 border-gray-500 text-black appearance-none">
+                        <option value="light">CLASSIC CONSOLE (LIGHT)</option>
+                        <option value="vibrant">VIBRANT CANDY (LIGHT)</option>
+                        <option value="dark">CYBERPUNK (DARK)</option>
+                    </select>
+                </div>
+                
+                <button id="singlePlayerButton" class="btn btn-green mb-6 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-green-500 border-green-700 text-black hover:bg-green-400 active:bg-green-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">SINGLE PLAYER (vs. BOTS)</button>
+                <button id="multiplayerButton" class="btn btn-cyan block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">MULTIPLAYER (ONLINE)</button>
+                <button id="signOutButton" class="btn btn-red mt-6 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-red-500 border-red-700 text-white hover:bg-red-400 active:bg-red-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">SIGN OUT</button>
+            </div>
+            
+            <div id="singlePlayerLobbyScreen" class="screen">
+                <h2 class="font-heading text-2xl text-center text-success mb-4">SINGLE PLAYER</h2>
+                <p class="text-primary text-lg mb-4">Select topic & branch and compete against the bots!</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="topicSelectSP" class="block text-lg text-accent mb-2">TOPIC:</label>
+                        <select id="topicSelectSP" class="select-retro block w-full p-4 border-4 border-gray-500 text-black appearance-none">
+                            <option value="math">MATHEMATICS</option>
+                            <option value="trivia">TRIVIA</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="subTopicSelectSP" class="block text-lg text-accent mb-2">BRANCH / CATEGORY:</label>
+                        <select id="subTopicSelectSP" class="select-retro block w-full p-4 border-4 border-gray-500 text-black appearance-none">
+                            </select>
+                    </div>
+                </div>
+                <button id="singlePlayerStartButton" class="btn btn-green mt-8 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-green-500 border-green-700 text-black hover:bg-green-400 active:bg-green-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">START</button>
+                <button id="backToMenuButton1" class="btn btn-gray mt-4 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-gray-600 border-gray-800 text-white hover:bg-gray-500 active:bg-gray-500 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">BACK TO MENU</button>
+            </div>
+            
+            <div id="multiplayerScreen" class="screen">
+                <h2 class="font-heading text-2xl text-center text-accent mb-4">MULTIPLAYER</h2>
+                
+                <button id="browseGamesButton" class="btn btn-yellow mb-6 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-yellow-400 border-yellow-600 text-black hover:bg-yellow-300 active:bg-yellow-300 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">BROWSE PUBLIC GAMES</button>
+                
+                <div class="border-t-4 divider border-dashed pt-6 mb-6">
+                    <button id="createButton" class="btn btn-green block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-green-500 border-green-700 text-black hover:bg-green-400 active:bg-green-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">CREATE PRIVATE GAME</button>
+                    <div class="text-center my-4">
+                        <label for="makePublicCheckbox" class="text-primary text-lg align-middle">
+                            <input type="checkbox" id="makePublicCheckbox">
+                            Make Game Public?
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="border-t-4 divider border-dashed pt-6">
+                    <input type="text" id="gameIdInput" class="input-retro block w-full p-4 border-4 border-gray-500 mb-4" placeholder="ENTER GAME ID...">
+                    <button id="joinButton" class="btn btn-cyan block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">JOIN BY ID</button>
+                </div>
+                <button id="backToMenuButton2" class="btn btn-gray mt-6 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-gray-600 border-gray-800 text-white hover:bg-gray-500 active:bg-gray-500 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">BACK TO MENU</button>
+            </div>
+            
+            <div id="serverListScreen" class="screen">
+                <h2 class="font-heading text-2xl text-center text-accent-yellow mb-4">PUBLIC GAMES</h2>
+                <ul id="publicGameList" class="text-primary space-y-2 mb-6 min-h-[150px] max-h-[300px] overflow-y-auto">
+                    </ul>
+                <button id="refreshServersButton" class="btn btn-cyan mb-4 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">REFRESH</button>
+                <button id="backToMultiplayerButton" class="btn btn-gray block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-gray-600 border-gray-800 text-white hover:bg-gray-500 active:bg-gray-500 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">BACK</button>
+            </div>
+
+            <div id="lobbyScreen" class="screen">
+                <h2 class="font-heading text-2xl text-center text-highlight mb-4">LOBBY</h2>
+                <div class="bg-level-1 bg-blue-100 border-blue-300 p-4 mb-4 border-2">
+                    <p class="text-primary text-lg">Share this Game ID:</p>
+                    <p id="lobbyGameId" class="text-success text-xl break-all">...</p>
+                </div>
+                
+                <h3 class="font-heading text-xl text-accent mb-2">PLAYERS:</h3>
+                <ul id="lobbyPlayerList" class="text-primary space-y-2 mb-6 min-h-[50px]">
+                    </ul>
+                
+                <div id="hostControls" class="hidden space-y-4">
+                    <p class="text-primary text-lg">HOST: Select topic & branch and start the game!</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                               <label for="topicSelectMP" class="block text-lg text-accent mb-2">TOPIC:</label>
+                               <select id="topicSelectMP" class="select-retro block w-full p-4 border-4 border-gray-500 text-black appearance-none">
+                                   <option value="math">MATHEMATICS</option>
+                                   <option value="trivia">TRIVIA</option>
+                               </select>
+                           </div>
+                        <div>
+                            <label for="subTopicSelectMP" class="block text-lg text-accent mb-2">BRANCH / CATEGORY:</label>
+                            <select id="subTopicSelectMP" class="select-retro block w-full p-4 border-4 border-gray-500 text-black appearance-none">
+                                </select>
+                        </div>
+                    </div>
+                    <button id="lobbyStartButton" class="btn btn-green mt-8 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-green-500 border-green-700 text-black hover:bg-green-400 active:bg-green-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">START GAME</button>
+                </div>
+                <p id="nonHostText" class="text-secondary text-center text-lg hidden">Waiting for Host to start...</p>
+            </div>
+
+            <div id="quizScreen" class="screen">
+                <div class="flex items-center justify-center space-x-4 mb-4 text-center">
+                    <div id="diceIcon" class="text-5xl">🎲</div>
+                    <div>
+                        <div id="rollResult" class="font-heading text-lg text-highlight">ROLLING...</div>
+                        <div id="difficultyText" class="text-primary text-base"></div>
+                    </div>
+                </div>
+
+                <div class="bg-level-1 bg-blue-100 border-blue-300 border-4 p-4 min-h-[100px] mb-4">
+                    <p id="questionText" class="text-primary text-2xl"></p>
+                </div>
+                
+                <div id="answerArea">
+                    <input type="number" id="numberAnswer" class="hidden w-full p-4 bg-level-2 bg-white border-gray-500 text-primary text-2xl" placeholder="TYPE ANSWER...">
+                    <div id="mcAnswerArea" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button class="btn btn-cyan mc-option block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">Option A</button>
+                        <button class="btn btn-cyan mc-option block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">Option B</button>
+                        <button class="btn btn-cyan mc-option block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">Option C</button>
+                        <button class="btn btn-cyan mc-option block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-cyan-500 border-cyan-700 text-black hover:bg-cyan-400 active:bg-cyan-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">Option D</button>
+                    </div>
+                </div>
+
+                <button id="submitAnswerButton" class="btn btn-yellow mt-6 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-yellow-400 border-yellow-600 text-black hover:bg-yellow-300 active:bg-yellow-300 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">SUBMIT</button>
+                <p id="waitMessage" class="text-secondary text-center text-lg mt-4 hidden">Answer locked! Waiting for others...</p>
+            </div>
+            
+            <div id="resultScreen" class="screen text-center">
+                <h2 id="resultTitle" class="font-heading text-3xl mb-4">CORRECT!</h2>
+                <p id="resultFeedback" class="text-primary text-xl mb-4">You gained 10 points.</p>
+                
+                <h3 class="font-heading text-xl text-accent mb-2">ALL ANSWERS:</h3>
+                <ul id="playerResultsList" class="text-primary space-y-2 text-left mb-6">
+                    </ul>
+                <button id="nextButton" class="btn btn-green mt-6 hidden block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-green-500 border-green-700 text-black hover:bg-green-400 active:bg-green-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">NEXT</button>
+                <p id="waitHostMessage" class="text-secondary text-center text-lg mt-4 hidden">Waiting for Host to load next question...</p>
+            </div>
+
+            <div id="gameOverScreen" class="screen text-center">
+                <h2 class="font-heading text-4xl text-accent-yellow mb-6">GAME OVER!</h2>
+                <h3 id="winnerText" class="font-heading text-3xl text-success mb-6">PLAYER WINS!</h3>
+                
+                <h3 class="font-heading text-xl text-accent mb-2">FINAL SCORES:</h3>
+                <ul id="finalScoreList" class="text-primary space-y-3 text-2xl">
+                    </ul>
+
+                <button id="restartButton" class="btn btn-pink mt-10 block w-full p-4 text-center uppercase border-4 border-b-8 border-r-8 transition-all bg-pink-500 border-pink-700 text-white hover:bg-pink-400 active:bg-pink-400 active:border-b-4 active:border-r-4 active:translate-y-1 active:translate-x-1">BACK TO MENU</button>
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

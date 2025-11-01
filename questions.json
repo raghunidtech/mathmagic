@@ -1,0 +1,267 @@
+{
+  "arithmetic": {
+    "easy": [
+      { "q": "45 + 38 =", "t": "n", "a": 83 },
+      { "q": "91 - 25 =", "t": "n", "a": 66 },
+      { "q": "100 - 33 =", "t": "n", "a": 67 },
+      { "q": "15 * 3 =", "t": "n", "a": 45 },
+      { "q": "44 / 2 =", "t": "n", "a": 22 },
+      { "q": "50 + 19 =", "t": "n", "a": 69 },
+      { "q": "75 - 40 =", "t": "n", "a": 35 },
+      { "q": "12 * 4 =", "t": "n", "a": 48 },
+      { "q": "60 / 6 =", "t": "n", "a": 10 },
+      { "q": "25 + 52 =", "t": "n", "a": 77 }
+    ],
+    "medium": [
+      { "q": "25 x 12 =", "t": "n", "a": 300 },
+      { "q": "360 / 12 =", "t": "n", "a": 30 },
+      { "q": "55 * 5 =", "t": "n", "a": 275 },
+      { "q": "123 + 456 =", "t": "n", "a": 579 },
+      { "q": "800 - 250 =", "t": "n", "a": 550 },
+      { "q": "11 * 11 =", "t": "n", "a": 121 },
+      { "q": "144 / 12 =", "t": "n", "a": 12 },
+      { "q": "98 + 105 =", "t": "n", "a": 203 },
+      { "q": "500 - 199 =", "t": "n", "a": 301 },
+      { "q": "15 * 15 =", "t": "n", "a": 225 }
+    ],
+    "hard": [
+      { "q": "(15 + 5) * 4 =", "t": "n", "a": 80 },
+      { "q": "What is 20% of 300?", "t": "n", "a": 60 },
+      { "q": "7 * (8 + 2) =", "t": "n", "a": 70 },
+      { "q": "150 / (10 + 5) =", "t": "n", "a": 10 },
+      { "q": "What is 15% of 200?", "t": "n", "a": 30 },
+      { "q": "100 - (6 * 7) =", "t": "n", "a": 58 },
+      { "q": "(50 / 10) * 9 =", "t": "n", "a": 45 },
+      { "q": "30% of 150?", "t": "n", "a": 45 },
+      { "q": "8 + 3 * 5 =", "t": "n", "a": 23 },
+      { "q": "(100 - 19) / 9 =", "t": "n", "a": 9 }
+    ],
+    "veryhard": [
+      { "q": "(9 * 8) + (7 * 6) =", "t": "n", "a": 114 },
+      { "q": "5 * (100 / 20) + 15 =", "t": "n", "a": 40 },
+      { "q": "(12 * 12) - (10 * 10) =", "t": "n", "a": 44 },
+      { "q": "100 + (25 * 4) / 2 =", "t": "n", "a": 150 },
+      { "q": "99 / (10 - 1) + 20 =", "t": "n", "a": 31 },
+      { "q": "((5 + 3) * 10) / 4 =", "t": "n", "a": 20 },
+      { "q": "1000 / (5 * 4) - 10 =", "t": "n", "a": 40 },
+      { "q": "What is 25% of (80 * 2)?", "t": "n", "a": 40 }
+    ]
+  },
+  "algebra": {
+    "easy": [
+      { "q": "x + 5 = 12. What is x?", "t": "n", "a": 7 },
+      { "q": "x - 8 = 10. What is x?", "t": "n", "a": 18 },
+      { "q": "x - 3 = 4. What is x?", "t": "n", "a": 7 },
+      { "q": "10 + x = 18. What is x?", "t": "n", "a": 8 },
+      { "q": "x + 9 = 20. What is x?", "t": "n", "a": 11 },
+      { "q": "15 - x = 8. What is x?", "t": "n", "a": 7 }
+    ],
+    "medium": [
+      { "q": "3x = 21. What is x?", "t": "n", "a": 7 },
+      { "q": "x / 4 = 5. What is x?", "t": "n", "a": 20 },
+      { "q": "x / 5 = 10. What is x?", "t": "n", "a": 50 },
+      { "q": "6x = 36. What is x?", "t": "n", "a": 6 },
+      { "q": "20 - x = 14. What is x?", "t": "n", "a": 6 },
+      { "q": "x / 2 = 15. What is x?", "t": "n", "a": 30 },
+      { "q": "8x = 64. What is x?", "t": "n", "a": 8 }
+    ],
+    "hard": [
+      { "q": "2x + 3 = 17. What is x?", "t": "n", "a": 7 },
+      { "q": "5x - 10 = 40. What is x?", "t": "n", "a": 10 },
+      { "q": "3x + 1 = 16. What is x?", "t": "n", "a": 5 },
+      { "q": "x/2 - 1 = 4. What is x?", "t": "n", "a": 10 },
+      { "q": "4x - 5 = 15. What is x?", "t": "n", "a": 5 },
+      { "q": "x/5 + 2 = 7. What is x?", "t": "n", "a": 25 }
+    ],
+    "veryhard": [
+      { "q": "x/3 + 1 = 7. What is x?", "t": "n", "a": 18 },
+      { "q": "(x + 1) / 3 = 5. What is x?", "t": "n", "a": 14 },
+      { "q": "2(x + 3) = 14. What is x?", "t": "n", "a": 4 },
+      { "q": "3x - 2 = 2x + 5. What is x?", "t": "n", "a": 7 },
+      { "q": "x/4 + 5 = 8. What is x?", "t": "n", "a": 12 }
+    ]
+  },
+  "geometry": {
+    "easy": [
+      { "q": "How many sides does a triangle have?", "t": "n", "a": 3 },
+      { "q": "How many sides does a square have?", "t": "n", "a": 4 },
+      { "q": "How many sides does a pentagon have?", "t": "n", "a": 5 },
+      { "q": "What is a shape with 6 sides called?", "t": "mc", "o": ["Hexagon", "Pentagon", "Octagon", "Square"], "a": "Hexagon" },
+      { "q": "How many corners does a square have?", "t": "n", "a": 4 },
+      { "q": "Is a circle a polygon?", "t": "mc", "o": ["No", "Yes"], "a": "No" }
+    ],
+    "medium": [
+      { "q": "A square has a side length of 5. What is its area?", "t": "n", "a": 25 },
+      { "q": "A rectangle has sides 4 and 6. What is its perimeter?", "t": "n", "a": 20 },
+      { "q": "A square has a side length of 8. What is its perimeter?", "t": "n", "a": 32 },
+      { "q": "Area of rectangle (l=10, w=5)?", "t": "n", "a": 50 },
+      { "q": "Sum of angles in a triangle (degrees)?", "t": "n", "a": 180 },
+      { "q": "Perimeter of square with area 36?", "t": "n", "a": 24 }
+    ],
+    "hard": [
+      { "q": "What is 180 degrees in radians?", "t": "mc", "o": ["pi", "2*pi", "pi/2", "pi/4"], "a": "pi" },
+      { "q": "Area of triangle (b=10, h=6)?", "t": "n", "a": 30 },
+      { "q": "Circumference of circle (r=5, use 3.14)?", "t": "n", "a": 31.4 },
+      { "q": "Area of circle (r=10, use 3.14)?", "t": "n", "a": 314 },
+      { "q": "Sum of angles in a quadrilateral (degrees)?", "t": "n", "a": 360 }
+    ],
+    "veryhard": [
+      { "q": "A right triangle has legs of 3 and 4. What is the hypotenuse?", "t": "n", "a": 5 },
+      { "q": "What is the volume of a cube with side length 3?", "t": "n", "a": 27 },
+      { "q": "Pythagoras: a=6, b=8. What is c?", "t": "n", "a": 10 },
+      { "q": "Volume of cylinder (r=2, h=5, use 3.14)?", "t": "n", "a": 62.8 },
+      { "q": "Hypotenuse=13, leg=5. Other leg?", "t": "n", "a": 12 }
+    ]
+  },
+  "statistics": {
+    "easy": [
+      { "q": "What is the mean (average) of 2, 4, and 6?", "t": "n", "a": 4 },
+      { "q": "What is the mode of 1, 2, 2, 3, 4?", "t": "n", "a": 2 },
+      { "q": "What is the mode of 5, 8, 8, 1?", "t": "n", "a": 8 },
+      { "q": "What is the average of 1 and 3?", "t": "n", "a": 2 },
+      { "q": "Mode of 9, 9, 1, 2, 1, 9?", "t": "n", "a": 9 }
+    ],
+    "medium": [
+      { "q": "What is the median of 1, 5, 2, 8, 3?", "t": "n", "a": 3 },
+      { "q": "What is the range of 10, 2, 5, 8?", "t": "n", "a": 8 },
+      { "q": "What is the median of 9, 2, 7, 4, 1?", "t": "n", "a": 4 },
+      { "q": "What is the range of 100, 20, 50?", "t": "n", "a": 80 },
+      { "q": "Median of 2, 4, 6, 8?", "t": "n", "a": 5 },
+      { "q": "Average of 0, 5, 10?", "t": "n", "a": 5 }
+    ],
+    "hard": [
+      { "q": "Probability of rolling a 6 on a die?", "t": "mc", "o": ["1/6", "1/3", "1/2", "6"], "a": "1/6" },
+      { "q": "What is the average of 10, 20, 30, 40?", "t": "n", "a": 25 },
+      { "q": "Probability of flipping heads?", "t": "mc", "o": ["1/2", "1/4", "1", "0"], "a": "1/2" },
+      { "q": "Median of 1, 1, 2, 3, 5, 8?", "t": "n", "a": 2.5 },
+      { "q": "Average of 10, 0, 20?", "t": "n", "a": 10 }
+    ],
+    "veryhard": [
+      { "q": "Probability of flipping two heads?", "t": "mc", "o": ["1/4", "1/2", "1/3", "1"], "a": "1/4" },
+      { "q": "Probability of *not* rolling a 6?", "t": "mc", "o": ["5/6", "1/6", "1/2", "1"], "a": "5/6" },
+      { "q": "Average of 1, 2, 3, 4, 5?", "t": "n", "a": 3 },
+      { "q": "Probability of drawing an Ace (4 Aces in 52 cards)?", "t": "mc", "o": ["1/13", "1/52", "4/13", "1/4"], "a": "1/13" },
+      { "q": "Median of 1, 8, 3, 5?", "t": "n", "a": 4 }
+    ]
+  },
+  "general": {
+    "easy": [
+      { "q": "What color is a stop sign?", "t": "mc", "o": ["Red", "Green", "Blue", "Yellow"], "a": "Red" },
+      { "q": "How many days are in a week?", "t": "n", "a": 7 },
+      { "q": "What sound does a cat make?", "t": "mc", "o": ["Meow", "Woof", "Moo", "Oink"], "a": "Meow" },
+      { "q": "What is the color of an emerald?", "t": "mc", "o": ["Green", "Red", "Blue", "Yellow"], "a": "Green" },
+      { "q": "How many legs does a spider have?", "t": "n", "a": 8 }
+    ],
+    "medium": [
+      { "q": "What is the capital of France?", "t": "mc", "o": ["Paris", "London", "Rome", "Berlin"], "a": "Paris" },
+      { "q": "How many planets are in our solar system?", "t": "n", "a": 8 },
+      { "q": "What is the largest mammal?", "t": "mc", "o": ["Blue Whale", "Elephant", "Giraffe", "Hippo"], "a": "Blue Whale" },
+      { "q": "What is the main gas found in the air we breathe?", "t": "mc", "o": ["Nitrogen", "Oxygen", "Carbon Dioxide", "Hydrogen"], "a": "Nitrogen" },
+      { "q": "How many colors are in a rainbow?", "t": "n", "a": 7 }
+    ],
+    "hard": [
+      { "q": "What is the chemical symbol for water?", "t": "mc", "o": ["H2O", "CO2", "O2", "NaCl"], "a": "H2O" },
+      { "q": "Who painted the Mona Lisa?", "t": "mc", "o": ["Leonardo da Vinci", "Michelangelo", "Raphael", "Donatello"], "a": "Leonardo da Vinci" },
+      { "q": "What is the tallest mountain in the world?", "t": "mc", "o": ["Mount Everest", "K2", "Kangchenjunga", "Makalu"], "a": "Mount Everest" },
+      { "q": "What is the chemical symbol for Gold?", "t": "mc", "o": ["Au", "Ag", "Go", "Gd"], "a": "Au" },
+      { "q": "What is the hardest natural substance on Earth?", "t": "mc", "o": ["Diamond", "Quartz", "Iron", "Graphite"], "a": "Diamond" }
+    ],
+    "veryhard": [
+      { "q": "What is the square root of 144?", "t": "n", "a": 12 },
+      { "q": "What year did the Titanic sink?", "t": "n", "a": 1912 },
+      { "q": "What is the most spoken language in the world?", "t": "mc", "o": ["Mandarin Chinese", "English", "Spanish", "Hindi"], "a": "Mandarin Chinese" },
+      { "q": "What is the speed of light (meters per second)?", "t": "mc", "o": ["3.00 x 10^8", "1.50 x 10^8", "3.00 x 10^6", "300"], "a": "3.00 x 10^8" },
+      { "q": "Who wrote 'Hamlet'?", "t": "mc", "o": ["William Shakespeare", "Charles Dickens", "Leo Tolstoy", "Mark Twain"], "a": "William Shakespeare" }
+    ]
+  },
+  "history": {
+    "easy": [
+      { "q": "Who was the first President of the United States?", "t": "mc", "o": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"], "a": "George Washington" },
+      { "q": "In what country are the pyramids of Giza located?", "t": "mc", "o": ["Egypt", "Mexico", "Peru", "China"], "a": "Egypt" },
+      { "q": "What was the name of the ship that brought the Pilgrims to America?", "t": "mc", "o": ["Mayflower", "Santa Maria", "Titanic", "Endeavour"], "a": "Mayflower" },
+      { "q": "Who invented the lightbulb?", "t": "mc", "o": ["Thomas Edison", "Nikola Tesla", "Alexander G. Bell", "Marie Curie"], "a": "Thomas Edison" },
+      { "q": "Which country gifted the Statue of Liberty to the USA?", "t": "mc", "o": ["France", "Spain", "UK", "Italy"], "a": "France" }
+    ],
+    "medium": [
+      { "q": "World War II ended in what year?", "t": "n", "a": 1945 },
+      { "q": "Who 'discovered' America in 1492?", "t": "mc", "o": ["Christopher Columbus", "Leif Erikson", "Amerigo Vespucci", "Ferdinand Magellan"], "a": "Christopher Columbus" },
+      { "q": "Who was the first person to step on the Moon?", "t": "mc", "o": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"], "a": "Neil Armstrong" },
+      { "q": "What city was buried by the eruption of Mt. Vesuvius in 79 AD?", "t": "mc", "o": ["Pompeii", "Rome", "Athens", "Sparta"], "a": "Pompeii" },
+      { "q": "In what year did World War I begin?", "t": "n", "a": 1914 }
+    ],
+    "hard": [
+      { "q": "What empire built the Colosseum?", "t": "mc", "o": ["Roman Empire", "Greek Empire", "Egyptian Empire", "Persian Empire"], "a": "Roman Empire" },
+      { "q": "Who wrote the Declaration of Independence?", "t": "mc", "o": ["Thomas Jefferson", "Benjamin Franklin", "John Adams", "George Washington"], "a": "Thomas Jefferson" },
+      { "q": "The Battle of Waterloo was fought in what year?", "t": "n", "a": 1815 },
+      { "q": "Who was the first female Prime Minister of the United Kingdom?", "t": "mc", "o": ["Margaret Thatcher", "Theresa May", "Queen Elizabeth II", "Angela Merkel"], "a": "Margaret Thatcher" },
+      { "q": "What ancient civilization built Machu Picchu?", "t": "mc", "o": ["Inca", "Aztec", "Maya", "Egyptian"], "a": "Inca" }
+    ],
+    "veryhard": [
+      { "q": "The Magna Carta was signed in what year?", "t": "n", "a": 1215 },
+      { "q": "Who was the first person to walk on the moon?", "t": "mc", "o": ["Neil Armstrong", "Buzz Aldrin", "Michael Collins", "Yuri Gagarin"], "a": "Neil Armstrong" },
+      { "q": "The Hundred Years' War was fought between which two countries?", "t": "mc", "o": ["England and France", "Spain and Portugal", "Germany and Russia", "Italy and Austria"], "a": "England and France" },
+      { "q": "In what year did the Berlin Wall fall?", "t": "n", "a": 1989 },
+      { "q": "Who was the first European explorer to reach India by sea?", "t": "mc", "o": ["Vasco da Gama", "Ferdinand Magellan", "Marco Polo", "James Cook"], "a": "Vasco da Gama" }
+    ]
+  },
+  "history_indian": {
+    "easy": [
+      { "q": "Who is known as the 'Father of the Nation' in India?", "t": "mc", "o": ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel", "B.R. Ambedkar"], "a": "Mahatma Gandhi" },
+      { "q": "What is the capital of India?", "t": "mc", "o": ["New Delhi", "Mumbai", "Kolkata", "Chennai"], "a": "New Delhi" },
+      { "q": "What is the national animal of India?", "t": "mc", "o": ["Tiger", "Lion", "Elephant", "Peacock"], "a": "Tiger" },
+      { "q": "What is the national flower of India?", "t": "mc", "o": ["Lotus", "Rose", "Sunflower", "Lily"], "a": "Lotus" },
+      { "q": "The Red Fort is located in which city?", "t": "mc", "o": ["Delhi", "Agra", "Jaipur", "Mumbai"], "a": "Delhi" }
+    ],
+    "medium": [
+      { "q": "India gained independence from Britain in what year?", "t": "n", "a": 1947 },
+      { "q": "Who was the first Prime Minister of India?", "t": "mc", "o": ["Jawaharlal Nehru", "Mahatma Gandhi", "Sardar Patel", "Indira Gandhi"], "a": "Jawaharlal Nehru" },
+      { "q": "The 'Quit India' movement was launched in what year?", "t": "n", "a": 1942 },
+      { "q": "Who is known as the 'Iron Man of India'?", "t": "mc", "o": ["Sardar Patel", "Subhas Chandra Bose", "Bhagat Singh", "Lal Bahadur Shastri"], "a": "Sardar Patel" },
+      { "q": "What city is famous for the Golden Temple?", "t": "mc", "o": ["Amritsar", "Ludhiana", "Chandigarh", "New Delhi"], "a": "Amritsar" }
+    ],
+    "hard": [
+      { "q": "The Taj Mahal was built by which Mughal emperor?", "t": "mc", "o": ["Shah Jahan", "Akbar", "Babur", "Aurangzeb"], "a": "Shah Jahan" },
+      { "q": "Who wrote the Indian National Anthem, 'Jana Gana Mana'?", "t": "mc", "o": ["Rabindranath Tagore", "Bankim Chandra C", "Sarojini Naidu", "Subhas Chandra Bose"], "a": "Rabindranath Tagore" },
+      { "q": "Who was the first President of India?", "t": "mc", "o": ["Rajendra Prasad", "S. Radhakrishnan", "Jawaharlal Nehru", "B.R. Ambedkar"], "a": "Rajendra Prasad" },
+      { "q": "The Indus Valley Civilization is also known as the...?", "t": "mc", "o": ["Harappan Civilization", "Vedic Civilization", "Mauryan Empire", "Gupta Empire"], "a": "Harappan Civilization" },
+      { "q": "Who founded the Maurya Empire?", "t": "mc", "o": ["Chandragupta Maurya", "Ashoka", "Bindusara", "Chanakya"], "a": "Chandragupta Maurya" }
+    ],
+    "veryhard": [
+      { "q": "The battle of Plassey, establishing British rule, was fought in what year?", "t": "n", "a": 1757 },
+      { "q": "Who was the first *Indian* Governor-General of independent India?", "t": "mc", "o": ["C. Rajagopalachari", "Lord Mountbatten", "Jawaharlal Nehru", "Rajendra Prasad"], "a": "C. Rajagopalachari" },
+      { "q": "When was the first Battle of Panipat fought?", "t": "n", "a": 1526 },
+      { "q": "Who is considered the main architect of the Indian Constitution?", "t": "mc", "o": ["B.R. Ambedkar", "Jawaharlal Nehru", "Sardar Patel", "Mahatma Gandhi"], "a": "B.R. Ambedkar" },
+      { "q": "The first session of the Indian National Congress was held in...?", "t": "mc", "o": ["Bombay (Mumbai)", "Calcutta (Kolkata)", "Delhi", "Madras (Chennai)"], "a": "Bombay (Mumbai)" }
+    ]
+  },
+  "movies": {
+    "easy": [
+      { "q": "What is the name of the lion cub in The Lion King?", "t": "mc", "o": ["Simba", "Mufasa", "Scar", "Nala"], "a": "Simba" },
+      { "q": "What color is the Hulk?", "t": "mc", "o": ["Green", "Red", "Blue", "Yellow"], "a": "Green" },
+      { "q": "What is the name of the cowboy in Toy Story?", "t": "mc", "o": ["Woody", "Buzz", "Andy", "Sid"], "a": "Woody" },
+      { "q": "What does 'Dory' suffer from in 'Finding Nemo'?", "t": "mc", "o": ["Short-term memory loss", "A broken fin", "Fear of sharks", "Hunger"], "a": "Short-term memory loss" },
+      { "q": "What superhero is billionaire Tony Stark?", "t": "mc", "o": ["Iron Man", "Captain America", "Thor", "Hulk"], "a": "Iron Man" }
+    ],
+    "medium": [
+      { "q": "In Star Wars, what color is Luke Skywalker's first lightsaber?", "t": "mc", "o": ["Blue", "Green", "Red", "Purple"], "a": "Blue" },
+      { "q": "What is the name of the wizarding school in Harry Potter?", "t": "mc", "o": ["Hogwarts", "Beauxbatons", "Durmstrang", "Ilvermorny"], "a": "Hogwarts" },
+      { "q": "What is the name of the fictional snowman in 'Frozen'?", "t": "mc", "o": ["Olaf", "Sven", "Hans", "Kristoff"], "a": "Olaf" },
+      { "q": "Which movie is set in the fictional world of Pandora?", "t": "mc", "o": ["Avatar", "Star Wars", "Guardians of the Galaxy", "Dune"], "a": "Avatar" },
+      { "q": "What kind of animal is 'Bambi'?", "t": "mc", "o": ["Deer", "Rabbit", "Skunk", "Bear"], "a": "Deer" }
+    ],
+    "hard": [
+      { "q": "Who directed the movie Jaws?", "t": "mc", "o": ["Steven Spielberg", "George Lucas", "Francis Ford Coppola", "Martin Scorsese"], "a": "Steven Spielberg" },
+      { "q": "Which movie features the line 'Here's looking at you, kid.'?", "t": "mc", "o": ["Casablanca", "Gone with the Wind", "The Maltese Falcon", "Citizen Kane"], "a": "Casablanca" },
+      { "q": "Who played the character of Jack Dawson in 'Titanic'?", "t": "mc", "o": ["Leonardo DiCaprio", "Brad Pitt", "Tom Cruise", "Johnny Depp"], "a": "Leonardo DiCaprio" },
+      { "q": "Which film won the first-ever Academy Award for Best Picture?", "t": "mc", "o": ["Wings", "The Jazz Singer", "Metropolis", "Ben-Hur"], "a": "Wings" },
+      { "q": "In 'The Lord of the Rings', who is the original owner of the One Ring?", "t": "mc", "o": ["Sauron", "Gollum", "Bilbo", "Frodo"], "a": "Sauron" }
+    ],
+    "veryhard": [
+      { "q": "What is the name of the fictional African country in Black Panther?", "t": "mc", "o": ["Wakanda", "Genovia", "Zamunda", "Elbonia"], "a": "Wakanda" },
+      { "q": "In 'The Matrix', does Neo take the blue pill or the red pill?", "t": "mc", "o": ["Red", "Blue"], "a": "Red" },
+      { "q": "What is the highest-grossing film of all time (unadjusted for inflation)?", "t": "mc", "o": ["Avatar", "Avengers: Endgame", "Titanic", "Star Wars: The Force Awakens"], "a": "Avatar" },
+      { "q": "Who directed the 1994 film 'Pulp Fiction'?", "t": "mc", "o": ["Quentin Tarantino", "Steven Spielberg", "Martin Scorsese", "Coen Brothers"], "a": "Quentin Tarantino" },
+      { "q": "What is the name of the computer in '2001: A Space Odyssey'?", "t": "mc", "o": ["HAL", "WOPR", "Skynet", "GERTY"], "a": "HAL" }
+    ]
+  }
+}
