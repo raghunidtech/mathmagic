@@ -26,12 +26,10 @@ import {
     getDocs,
     limit,
     Timestamp,
-    runTransaction // <--- 1. IMPORT runTransaction
+    runTransaction // <--- Make sure runTransaction is imported
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-// --- FIREBASE CONFIG (Provided by environment) ---
-
-// ⬇️⬇️⬇️ PASTE YOUR firebaseConfig OBJECT HERE! ⬇️⬇️⬇️
+// --- FIREBASE CONFIG ---
 const firebaseConfig = {
     apiKey: "AIzaSyBCdHHQWC5Q01TqU4wjEs0wxV58tJgOumU",
     authDomain: "geekhub-b44f8.firebaseapp.com",
@@ -41,13 +39,11 @@ const firebaseConfig = {
     appId: "1:573054511027:web:d584bae6efcf8f3acc8dc6",
     measurementId: "G-2ENT119YTN"
 };
-// ⬆️⬆️⬆️ PASTE YOUR firebaseConfig OBJECT HERE! ⬆️⬆️⬆️
 
 const appId = firebaseConfig.appId || 'default-geek-hub';
-
-// --- FIREBASE SERVICES ---
 let app, auth, db;
 try {
+    // Check if the placeholder key is still there
     if (!firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith("AIzaSy...") || firebaseConfig.apiKey.includes("YOUR_API_KEY")) {
         throw new Error("API key is a placeholder. Please replace `firebaseConfig` with your project's actual config.");
     }
@@ -61,7 +57,7 @@ try {
 
 // --- FIRESTORE COLLECTION PATHS ---
 const gameCollectionPath = `artifacts/${appId}/public/data/geek-hub-games`;
-const userCollectionPath = `artifacts/${appId}/public/data/users`; // For user profiles
+const userCollectionPath = `artifacts/${appId}/public/data/users`;
 
 // --- C O N F IG ---
 const TOTAL_QUESTIONS_PER_GAME = 5;
@@ -84,8 +80,6 @@ const subTopics = {
 const difficultySettings = { easy: { points: 10, time: 5, penalty: -10 }, medium: { points: 20, time: 10, penalty: -10 }, hard: { points: 30, time: 20, penalty: -10 }, veryhard: { points: 40, time: 30, penalty: -10 } };
 const difficultyRollMap = { 1: 'easy', 2: 'easy', 3: 'medium', 4: 'medium', 5: 'hard', 6: 'veryhard' };
 const difficultyRollText = { 'easy': '(1-2)', 'medium': '(3-4)', 'hard': '(5)', 'veryhard': '(6)' };
-
-// --- Q U E S T IO N B A N K ---
 let questionBank = {};
 
 // --- D O M E L E M E N T S ---
@@ -394,7 +388,11 @@ function joinLobby(id) {
     console.log(`[DEBUG] Joining lobby ID: ${id}`); lobbyGameId.textContent = id; gameIdDisplay.textContent = `GAME ID: ${id}`; gameIdDisplay.classList.remove('hidden'); hostControls.classList.toggle('hidden', !isHost); nonHostText.classList.toggle('hidden', isHost); listenToGame(id); showScreen('lobby');
 }
 
-// --- 2. THIS FUNCTION IS NOW MORE RELIABLE ---
+/**
+ * Main listener for game state changes.
+ * This function is now simplified and has no special host logic
+ * for checking answers. It just displays the state from Firestore.
+ */
 function listenToGame(id) {
     console.log(`[DEBUG] Listening ID: ${id}`); if (gameUnsubscribe) { gameUnsubscribe(); gameUnsubscribe = null; } const gameRef = doc(db, gameCollectionPath, id); gameUnsubscribe = onSnapshot(gameRef, (docSnap) => {
         console.log("[DEBUG] Listener update."); let gameData; if (!docSnap.exists()) { if (gameMode === 'multiplayer') { alert("Game deleted!"); resetGame(); } return; } gameData = docSnap.data(); console.log("[DEBUG] State:", gameData.status); if (gameData.players && !gameData.players[userId] && gameData.status !== 'finished' && gameData.status !== 'lobby') { if (gameMode === 'multiplayer') { alert("Removed from game."); resetGame(); } return; } allPlayers = gameData.players || {};
@@ -402,23 +400,9 @@ function listenToGame(id) {
         currentSubTopic = gameData.subTopic;
         questionsAnswered = gameData.currentQuestionIndex || 0; usedQuestionIndices = gameData.usedQuestionIndices || {}; updateMultiplayerScoreDisplay(allPlayers);
         
-        // --- NEW LOGIC IS HERE ---
-        // We check the status *before* the switch.
-        // If we are the host and the game is "playing" and everyone has answered,
-        // we automatically move the game to the "results" state.
-        if (isHost && gameData.status === "playing") {
-            const playerIds = Object.keys(gameData.players);
-            const answeredIds = gameData.answeredBy || [];
-            if (answeredIds.length >= playerIds.length) {
-                console.log("[DEBUG] Host detects all answers in. Moving to results.");
-                // We update the doc, which will cause this listener to fire *again*
-                // with the new "results" status.
-                updateDoc(gameRef, { status: "results" });
-                return; // Stop processing this "playing" snapshot
-            }
-        }
-        // --- END NEW LOGIC ---
-        
+        // This function now *only* reacts to the status from the database.
+        // The logic to *change* the status is now 100% inside processMultiplayerAnswer.
+
         switch (gameData.status) {
             case "lobby": 
                 updateLobbyList(allPlayers, gameData); 
@@ -455,6 +439,7 @@ function listenToGame(id) {
     }, (error) => { console.error("Listener error:", error); if (gameMode === 'multiplayer') { alert("Connection error."); resetGame(); } });
 }
 
+
 function updateLobbyList(players, gameData) {
     lobbyPlayerList.innerHTML = ''; const sortedPids = Object.keys(players).sort((a, b) => { if (a === gameData?.hostId) return -1; if (b === gameData?.hostId) return 1; return (players[a]?.name || '').localeCompare(players[b]?.name || ''); }); sortedPids.forEach(pid => { const p = players[pid]; if (!p) return; const li = document.createElement('li'); li.textContent = `${p.name} (Score: ${p.score})`; if (pid === userId) li.textContent += " (You)"; if (gameData && pid === gameData.hostId) li.textContent += " (Host)"; li.classList.add('list-item'); lobbyPlayerList.appendChild(li); });
 }
@@ -475,7 +460,12 @@ async function hostLoadQuestion(questionIndex) {
     if (!usedQuestionIndices[currentSubTopic]) usedQuestionIndices[currentSubTopic] = { easy: [], medium: [], hard: [], veryhard: [] }; if (!usedQuestionIndices[currentSubTopic][difficulty]) usedQuestionIndices[currentSubTopic][difficulty] = []; const usedBankIndices = usedQuestionIndices[currentSubTopic][difficulty]; const allBankIndices = Array.from({ length: bank.length }, (_, i) => i); let availableIndices = allBankIndices.filter(index => !usedBankIndices.includes(index)); console.log(`[DEBUG] Avail ${difficulty}: ${availableIndices.length}/${allBankIndices.length}`); if (availableIndices.length === 0) { console.log(`[DEBUG] Reset used ${difficulty}`); usedQuestionIndices[currentSubTopic][difficulty] = []; availableIndices = allBankIndices; if (availableIndices.length === 0) { console.error(`[DEBUG MP] CRITICAL: Empty bank for ${currentSubTopic} - ${difficulty}`); alert("Error: No available questions."); resetGame(); return; } } const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)]; const qData = bank[randomIndex]; console.log(`[DEBUG] Sel index ${randomIndex}`); usedQuestionIndices[currentSubTopic][difficulty].push(randomIndex); const newQuestion = { question: qData.q, questionType: qData.t, answer: qData.a, options: qData.o || [] }; const newSettings = difficultySettings[difficulty]; const playersUpdate = { ...allPlayers }; Object.keys(playersUpdate).forEach(pid => { playersUpdate[pid].lastAnswer = null; }); try { console.log(`[DEBUG] Update Firestore Q${questionIndex + 1}`); await updateDoc(gameRef, { status: "playing", currentQuestionIndex: questionIndex, currentQuestion: newQuestion, currentSettings: newSettings, diceRoll: roll, difficulty: difficulty, players: playersUpdate, answeredBy: [], usedQuestionIndices: usedQuestionIndices }); console.log("[DEBUG] Update success."); } catch (e) { console.error("Error loading Q Firestore: ", e); alert(`Error: ${e.message}`); }
 }
 
-// --- 3. THIS FUNCTION IS NOW ATOMIC AND SAFE ---
+/**
+ * Processes a player's answer using a Firestore Transaction.
+ * This is atomic and safe from race conditions.
+ * It now *also* checks if all players have answered and updates the
+ * game status to "results" if they have.
+ */
 async function processMultiplayerAnswer(answer, isCorrect, feedback) {
     console.log(`[DEBUG] Process A: ${answer}, Correct: ${isCorrect}`);
     submitAnswerButton.disabled = true;
@@ -496,24 +486,36 @@ async function processMultiplayerAnswer(answer, isCorrect, feedback) {
 
             const gameData = gameSnap.data();
 
-            // Check if user has already answered *inside* the transaction
+            // 1. Check if user has already answered
             if ((gameData.answeredBy || []).includes(userId)) {
                 console.warn("[DEBUG] Already answered.");
                 return; // Exit the transaction
             }
 
-            // If not, apply the update
-            transaction.update(gameRef, {
+            // 2. Determine what the *new* state will be
+            const newAnsweredBy = [...(gameData.answeredBy || []), userId];
+            const totalPlayers = Object.keys(gameData.players).length;
+
+            // 3. Prepare the update payload
+            const updates = {
                 [`players.${userId}.lastAnswer`]: answerPayload,
                 [`players.${userId}.score`]: increment(points),
-                answeredBy: arrayUnion(userId)
-            });
+                answeredBy: newAnsweredBy // Use the new array, not arrayUnion
+            };
+
+            // 4. Check if this is the final answer
+            if (newAnsweredBy.length >= totalPlayers) {
+                console.log(`[DEBUG] Final answer (${newAnsweredBy.length}/${totalPlayers}) submitted. Moving to results.`);
+                updates.status = "results";
+            }
+            
+            // 5. Atomically write all changes
+            transaction.update(gameRef, updates);
         });
 
         console.log("[DEBUG] Submit A (Transaction) success.");
-        
-        // We NO LONGER need the host check or setTimeout here.
-        // The `listenToGame` function will handle the state change.
+        // The listener will now automatically pick up the "results" status
+        // and move all players forward at the same time.
 
     } catch (e) {
         console.error("Error submitting A (Transaction): ", e);
@@ -526,8 +528,6 @@ async function processMultiplayerAnswer(answer, isCorrect, feedback) {
     }
 }
 
-// --- THIS FUNCTION CAN BE DELETED ---
-// async function checkAllAnswered() { /* ... */ }
 
 function displayMultiplayerResults(gameData) {
     console.log("[DEBUG] Display MP results."); timerArea.classList.add('hidden'); const myResult = gameData.players[userId]?.lastAnswer; if (myResult) { resultTitle.textContent = myResult.isCorrect ? "CORRECT!" : "INCORRECT"; resultTitle.classList.toggle('text-green-500', myResult.isCorrect); resultTitle.classList.toggle('text-red-500', !myResult.isCorrect); resultFeedback.textContent = `${myResult.feedback} You got ${myResult.points} points.`; } else { resultTitle.textContent = "RESULTS"; resultTitle.classList.remove('text-green-500', 'text-red-500'); resultFeedback.textContent = "Waiting..."; } playerResultsList.innerHTML = ''; const sortedPlayerIds = Object.keys(gameData.players).sort((a, b) => (gameData.players[b]?.score || 0) - (gameData.players[a]?.score || 0)); sortedPlayerIds.forEach(pid => { const p = gameData.players[pid]; if (!p) return; const res = p.lastAnswer; const li = document.createElement('li'); li.textContent = `${p.name}: ${res ? (res.isCorrect ? '✅' : '❌') : '⌛'} (Ans: ${res ? res.answer : "N/A"}) Score: ${p.score}`; if (res) li.classList.add(res.isCorrect ? 'text-green-500' : 'text-red-500'); li.classList.add('list-item'); playerResultsList.appendChild(li); }); nextButton.classList.toggle('hidden', !isHost); waitHostMessage.classList.toggle('hidden', isHost); nextButton.textContent = (questionsAnswered + 1 >= TOTAL_QUESTIONS_PER_GAME) ? "FINISH GAME" : "NEXT (HOST ONLY)";
