@@ -44,8 +44,9 @@ const appId = firebaseConfig.appId || 'default-geek-hub';
 let app, auth, db;
 try {
     // Check if the placeholder key is still there
-    if (!firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith("AIzaSy...") || firebaseConfig.apiKey.includes("YOUR_API_KEY")) {
-        throw new Error("API key is a placeholder. Please replace `firebaseConfig` with your project's actual config.");
+    //if (!firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith("AIzaSy...") || firebaseConfig.apiKey.includes("YOUR_API_KEY")) {
+   if (!firebaseConfig.apiKey || firebaseConfig.apiKey.includes("YOUR_API_KEY")) {
+    throw new Error("API key is a placeholder. Please replace `firebaseConfig` with your project's actual config.");
     }
     app = initializeApp(firebaseConfig);
     auth = getAuth(app);
